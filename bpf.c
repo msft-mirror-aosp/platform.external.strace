@@ -327,6 +327,33 @@ BEGIN_BPF_CMD_DECODER(BPF_PROG_LOAD)
 		break;
 	PRINT_FIELD_XVAL_INDEX(", ", attr, expected_attach_type, bpf_attach_type,
 			       "BPF_???");
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, prog_btf_fd)) break;
+	PRINT_FIELD_FD(", ", attr, prog_btf_fd, tcp);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, func_info_rec_size)) break;
+	PRINT_FIELD_U(", ", attr, func_info_rec_size);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, func_info)) break;
+	PRINT_FIELD_ADDR64(", ", attr, func_info);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, func_info_cnt)) break;
+	PRINT_FIELD_U(", ", attr, func_info_cnt);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, line_info_rec_size)) break;
+	PRINT_FIELD_U(", ", attr, line_info_rec_size);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, line_info)) break;
+	PRINT_FIELD_ADDR64(", ", attr, line_info);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, line_info_cnt)) break;
+	PRINT_FIELD_U(", ", attr, line_info_cnt);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, attach_btf_id)) break;
+	PRINT_FIELD_U(", ", attr, attach_btf_id);
+
+	if (len <= offsetof(struct BPF_PROG_LOAD_struct, attach_fd)) break;
+	PRINT_FIELD_FD(", ", attr, attach_fd, tcp);
 }
 END_BPF_CMD_DECODER(RVAL_DECODED | RVAL_FD)
 
