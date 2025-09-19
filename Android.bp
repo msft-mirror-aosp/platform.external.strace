@@ -322,4 +322,5 @@ cc_binary {
 
     name: "strace",
 
+    recovery_available: true,
 }
