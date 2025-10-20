@@ -13,4 +13,7 @@ third_party {
     value: "https://github.com/strace/strace"
     version: "4.25"
   }
+  security: {
+    tag: "NVD-CPE2.3:cpe:/a:strace_project:strace:4.25"
+  }
 }
